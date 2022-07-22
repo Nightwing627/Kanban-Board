@@ -586,13 +586,15 @@ body {
 }
 
 .btn-add-task {
-  padding: 0.25rem 0.5rem;
-  font-size: 0.875rem;
-  color: #fb9743;
+  padding: 0.2rem 0.3rem;
+  font-size: 1.5rem;
+  color: #9b59b6;
+  line-height: 1.5rem;
+  background: #ebf8ff;
 }
 .btn-add-task:hover {
-  color: #fb7605;
-  text-decoration: underline;
+  background: #cfcfcf;
+  color: #9b59b6;
 }
 
 .modal-header {

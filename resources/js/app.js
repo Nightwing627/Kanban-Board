@@ -19,7 +19,18 @@ window.Vue = require('vue').default;
 // const files = require.context('./', true, /\.vue$/i)
 // files.keys().map(key => Vue.component(key.split('/').pop().split('.')[0], files(key).default))
 
+import { library } from '@fortawesome/fontawesome-svg-core';
+import { fas, faSpinner, faPlus, faTrashCan, faPenToSquare, faArrowRotateRight } from '@fortawesome/free-solid-svg-icons';
+import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome';
+import Vue from 'vue';
+
+library.add(faSpinner, fas, faSpinner, faPlus, faTrashCan, faPenToSquare, faArrowRotateRight);
+
+Vue.component('font-awesome-icon', FontAwesomeIcon);
 Vue.component('kanban-board', require("./components/KanbanBoard.vue").default);
+
+
+Vue.config.productionTip = false;
 /**
  * Next, we will create a fresh Vue application instance and attach it to
  * the page. Then, you may begin adding components to this application

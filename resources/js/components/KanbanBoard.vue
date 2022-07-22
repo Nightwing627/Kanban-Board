@@ -11,22 +11,20 @@
           <h4 class="font-medium text-white">
             {{ status.title }}
           </h4>
-          <button
-            @click="showTaskModal(status.id)"
-            class="btn btn-add-task"
-          >
-            Add Task
-          </button>
-          <!-- <button
-            @click="openModal"
-            v-if="newTaskForStatus === status.id"
-            :status-id="status.id"
-            v-on:task-added="handleTaskAdded"
-            v-on:task-canceled="closeAddTaskForm"
-            class="btn btn-add-task"
-          >
-            Open Modal
-          </button> -->
+          <div class="action">
+            <button
+              @click="showTaskModal(status.id)"
+              class="btn btn-add-task"
+            >
+                <font-awesome-icon icon="plus" />
+            </button>
+            <button
+              @click="showDelete(status.id)"
+              class="btn btn-add-task"
+            >
+                <font-awesome-icon icon="trash-can" />
+            </button>
+          </div>
         </div>
         <div class="add-task-area p-2">
           <!-- Tasks area -->
@@ -48,9 +46,6 @@
                 <span class="mb-2">
                   {{ task.title }}
                 </span>
-                <p class="text-gray-700">
-                  {{ task.description }}
-                </p>
               </div>
               <!-- ./Tasks area -->
             </transition-group>
@@ -95,9 +90,7 @@ export default {
       newTaskForStatus: 0
     };
   },
-  created() {
-// this.$modal.on('eventTest', ()=>{console.log('333333333333333')})
-  },
+
   computed: {
     taskDragOptions() {
       return {
@@ -126,6 +119,8 @@ export default {
                 'closed': this.closeAddTaskForm,
             }
         );
+    },
+    showDelete(statusId) {
 
     },
     closeAddTaskForm() {
@@ -133,17 +128,13 @@ export default {
     },
     handleTaskAdded(newTask) {
         if (newTask) {
+            // reset the status's tasks
             const statusIndex = this.statuses.findIndex(
                 status => status.id === newTask.status_id
             );
-
-            // Add newly created task to our column
             this.statuses[statusIndex].tasks.push(newTask);
-
-            // Reset and close the AddTaskForm
             this.closeAddTaskForm();
         }
-
     },
     handleTaskMoved(evt) {
       axios.put("/tasks/sync", { columns: this.statuses }).catch(err => {
