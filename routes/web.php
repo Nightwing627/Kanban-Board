@@ -28,9 +28,11 @@ Route::group(['middleware' => 'auth'], function() {
     Route::post('tasks', [TaskController::class, 'store'])->name('tasks.store');
     Route::put('tasks/sync', [TaskController::class, 'sync'])->name('tasks.sync');
     Route::put('tasks/{task}', [TaskController::class, 'update'])->name('tasks.update');
+    Route::delete('tasks/{id}', [TaskController::class, 'destory'])->name('tasks.destory');
 
     Route::get('statuses', [StatusController::class, 'index'])->name('statuses.index');
     Route::put('statuses', [StatusController::class, 'update'])->name('statuses.update');
+    Route::delete('statuses/{id}', [StatusController::class, 'destory'])->name('statuses.destory');
 });
 
 

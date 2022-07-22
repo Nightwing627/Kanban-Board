@@ -67,7 +67,7 @@ class TaskController extends Controller
         //
     }
 
-    public function destroy(Task $task)
+    public function destory(Task $task)
     {
         //
     }

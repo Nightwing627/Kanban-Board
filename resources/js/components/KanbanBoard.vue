@@ -69,6 +69,7 @@
 <script>
 import draggable from "vuedraggable";
 import AddTaskForm from "./AddTaskForm";
+import StatusDeleteForm from "./StatusDeleteForm.vue";
 import VModal from 'vue-js-modal'
 import Vue from "vue";
 import axios from 'axios';
@@ -121,7 +122,13 @@ export default {
         );
     },
     showDelete(statusId) {
-
+        this.$modal.show(
+            StatusDeleteForm,
+            {
+                sId: statusId,
+                updated: this.handleStatusDeleted },
+            { height: 'auto' },
+        )
     },
     closeAddTaskForm() {
       this.newTaskForStatus = 0;
@@ -135,6 +142,9 @@ export default {
             this.statuses[statusIndex].tasks.push(newTask);
             this.closeAddTaskForm();
         }
+    },
+    handleStatusDeleted() {
+
     },
     handleTaskMoved(evt) {
       axios.put("/tasks/sync", { columns: this.statuses }).catch(err => {
