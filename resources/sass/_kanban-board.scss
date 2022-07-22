@@ -1,0 +1,174 @@
+.kanban-container {
+    display: flex;
+    flex-direction: column;
+    position: relative;
+    margin-left: 1rem;
+    margin-right: 1rem;
+    margin-top: 2rem;
+    overflow: hidden;
+    width: 100%;
+    padding-right: calc(1.5rem * 0.5);
+    padding-left: calc(0 * 0.5);
+
+    .main-content {
+        height: 100%;
+        display: flex;
+        flex-direction: column;
+        overflow: auto;
+    }
+
+    .status-container {
+        position: relative;
+        display: flex;
+        overflow-x: auto;
+        height: 100%;
+
+        .status-item {
+            width: 80%;
+            margin-right: 1.5rem;
+            max-width: 20rem;
+            flex-shrink: 0;
+        }
+
+        .status-item-container {
+            border-radius: 0.375rem;
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1),
+                0 2px 4px -1px rgba(0, 0, 0, 0.06);
+            overflow: hidden;
+
+            .header {
+                display: flex;
+                justify-content: space-between;
+                align-items: baseline;
+                padding: 0.75rem;
+                background-color: #9b59b6;
+            }
+
+            .add-task-area {
+                background-color: #ebf8ff;
+            }
+
+            .draggable-item {
+                flex: 1 1 0%;
+                overflow: hidden;
+                .transition-group {
+                    display: flex;
+                    flex: 1 1 0%;
+                    flex-direction: column;
+                    height: 100%;
+                    overflow-x: hidden;
+                    overflow-y: auto;
+                    border-radius: 0.25rem;
+                    box-shadow: 0 0 0 1px rgba(0, 0, 0, 0.05);
+                }
+            }
+
+            .task-item {
+                display: flex;
+                flex-direction: column;
+                background-color: $color-white;
+                border-radius: 0.375rem;
+                box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.1),
+                    0 1px 2px 0 rgba(0, 0, 0, 0.06);
+                transform:
+                    translateX(0) translateY(0)
+                    rotate(0) skewX(0) skewY(0)
+                    scaleX(1) scaleY(1);
+                cursor: pointer;
+                &:hover {
+                    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1),
+                        0 2px 4px -1px rgba(0, 0, 0, 0.06);
+                }
+
+                & > span {
+                    display: block;
+                    font-size: 1.25rem;
+                    color: #1a202c;
+                }
+
+                & > p {
+                    color: #4a5568;
+                }
+            }
+
+            .no-task-area {
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                justify-content: center;
+                flex: 1 1 0%;
+
+                & > span {
+                    color: #718096;
+
+                }
+                & > button {
+                    margin-top: 0.25rem;
+                    font-size: 0.875rem;
+                    color: $color-orange;
+
+                    &:hover {
+                        color: $color-orange-hover;
+                        text-decoration: underline;
+                    }
+                }
+            }
+        }
+    }
+}
+
+.btn-add-task {
+  padding: 0.25rem 0.5rem;
+  font-size: 0.875rem;
+  color: $color-orange;
+  &:hover {
+    color: $color-orange-hover;
+    text-decoration: underline;
+  }
+}
+
+.modal-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 1.5rem 0 2rem;
+    background: aliceblue;
+    border-bottom: 1px solid #cddee1;
+}
+
+.modal-body {
+    padding: 1.5rem;
+    position: relative;
+    display: block;
+
+    label {
+        font-weight: 600;
+    }
+}
+
+.add-task-form {
+    display: flex;
+    flex-direction: column;
+    position: relative;
+    justify-content: space-between;
+    background-color: $color-white;
+    border-radius: 0.375rem;
+    box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.1),
+    0 1px 2px 0 rgba(0, 0, 0, 0.06);
+    overflow: hidden;
+}
+
+.error-msg span{
+    font-size: 0.75rem;
+    color: #f56565;
+}
+
+.modal-footer {
+    display: flex;
+    align-items: center;
+    padding: 1rem;
+    background: aliceblue;
+    border-top: 1px solid #cddee1;
+    justify-content: end;
+    gap: 10px;
+}
